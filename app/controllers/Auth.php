@@ -31,7 +31,7 @@ class Auth extends Controller{
             $result = $this->conn->query($sql)->fetch_assoc();
             if($result){
                 if(password_verify($password,$result['password'])){
-                    $dashboard = $baseUrl."Welcome";
+                    $dashboard = $baseUrl."Dashboard";
                     header("Location:$dashboard");
                 }else{
                     header("Location:index.php");
