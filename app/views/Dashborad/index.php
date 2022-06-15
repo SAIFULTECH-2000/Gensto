@@ -16,6 +16,8 @@
         <a class="active" href="index.html">Home</a>
         <a  href="<?=baseurl?>User">Users</a>
         <a href="hobby.html">Companys</a>
+        <a href="photo_gallery.html">Users</a>
+        <a href="<?=baseurl?>company">Companys</a>
        <a href="aboutus.html">Logout</a>
     </div>
 <div class="home">
