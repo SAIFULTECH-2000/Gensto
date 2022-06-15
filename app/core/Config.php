@@ -4,7 +4,7 @@
 
 // [CONFIGURATION HERE]
 //URL  OR DOMAIN
-$baseurl='http://localhost/framework/';
+$baseurl='http://localhost/gensto/';
 //DATABASE
 define('DB_HOST','localhost');
 define('DB_USER','root');
