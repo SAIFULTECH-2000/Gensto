@@ -14,7 +14,7 @@
             <h4>ADMIN</h4>
         </div>
         <a class="active" href="index.html">Home</a>
-        <a href="photo_gallery.html">Users</a>
+        <a  href="<?=baseurl?>User">Users</a>
         <a href="hobby.html">Companys</a>
        <a href="aboutus.html">Logout</a>
     </div>
