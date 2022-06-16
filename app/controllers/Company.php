@@ -8,8 +8,10 @@
 
             }
 
-            public function getall(){
-
+            public function register(){
+                $this->view('Components/header');
+                $this->view("Company/register_C");
+                $this->view('Components/footer');
             }
         }
         

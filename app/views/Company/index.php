@@ -11,7 +11,8 @@
     </div>
     <h2>Company List</h2>
     
-    <button class = "myButton">Register New Company</button>
+    
+    <a href="<?=baseurl?>Company/register"> <button class="myButton">Register New Company</button></a>
     <table class="styled-table">
         <thead>
             <tr>
