@@ -13,11 +13,12 @@
             <img src="<?=baseurl?>img/logo.png" style=" border-radius: 50%;" width="100px" >
             <h4>ADMIN</h4>
         </div>
-        <a class="active" href="index.html">Home</a>
+        <a class="active" href="<?=baseurl?>Dashboard/">Home</a>
         <a  href="<?=baseurl?>User">Users</a>
         <a href="<?=baseurl?>Customer">Customer</a>
-        <a href="photo_gallery.html">Users</a>
-        <a href="<?=baseurl?>company">Companys</a>
+        <a href="<?=baseurl?>Quotation">Quotation</a>
+        <a href="<?=baseurl?>Invoice">Invoice</a>
+        <a href="<?=baseurl?>Company">Companys</a>
        <a href="aboutus.html">Logout</a>
     </div>
 <div class="home">
