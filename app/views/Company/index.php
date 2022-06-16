@@ -1,10 +1,11 @@
+<script src="https://kit.fontawesome.com/75759bf957.js" crossorigin="anonymous"></script>
 <div class="con">
 
     <div class="search_wrap search_wrap_3">
         <div class="search_box">
             <input type="text" class="input" placeholder="search...">
             <div class="btn btn_common">
-                <i class="fas fa-search"></i>
+            <i class="fa-solid fa-magnifying-glass ico"></i>
             </div>
         </div>
     </div>

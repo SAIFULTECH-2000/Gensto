@@ -116,6 +116,9 @@ input[type=submit]:hover {
 	color: #8b7d77;
 }
 
+.ico{
+  padding: 23px;
+}
 .search_wrap{
 	width: 500px;
 	margin: 38px auto;
