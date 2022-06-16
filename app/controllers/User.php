@@ -17,7 +17,9 @@ class User extends Controller{
     }
 
     public function kemaskini(){
-
+        $this->view('Components/header');
+        $this->view('User/kemaskini');
+        $this->view('Components/footer');
     }
 }
         

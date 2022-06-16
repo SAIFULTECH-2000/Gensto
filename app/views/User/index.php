@@ -114,6 +114,7 @@ div {
 </style>
 <div class="content">
    <div style="padding:50px">
+   <center>
    <form action="/action_page.php">
     <table>
         <tr>
@@ -122,9 +123,10 @@ div {
         </tr>
     </table>
    </form>
+   </center>
    <br>
    <h1>Users Account</h1>
-   <button class="new">Register new Account Here</button>
+   <a href="<?=baseurl?>User/register" class="new">Register new Account Here</a>
    <br> 
    <hr>
     
@@ -146,9 +148,9 @@ div {
     <td>CLIENT</td>
     <td>Active</td>
     <td>
-        <button class="profile">Profile</button>
-        <button class="kemaskini">Kemaskini</button>
-        <button class="delete">Delete</button>
+        <a href="<?=baseurl?>User/profile" class="profile">Profile</a>
+        <a href="<?=baseurl?>User/Kemaskini" class="kemaskini">Kemaskini</a>
+        <a href="" class="delete" onclick="alert('Delete')" >Delete</a>
     </td>
   </tr>
   <tr>
