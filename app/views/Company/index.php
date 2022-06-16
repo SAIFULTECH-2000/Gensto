@@ -1,34 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-    <link rel="stylesheet" href="<?=baseurl?>css/style.css">
-    <title>Dashboard | GenSto</title>
-</head>
-<body>
-    <div class="sidebar">
-        <div class="mypic">
-            <img src="<?=baseurl?>img/logo.png" style=" border-radius: 50%;" width="100px" >
-            <h4>ADMIN</h4>
-        </div>
-        <a class="active" href="index.html">Home</a>
-        <a href="photo_gallery.html">Users</a>
-        <a href="hobby.html">Companys</a>
-       <a href="aboutus.html">Logout</a>
-    </div>
-    <div class="container">
+<div class="con">
 
-<div class="search_wrap search_wrap_3">
-    <div class="search_box">
-        <input type="text" class="input" placeholder="search...">
-        <div class="btn btn_common">
-            <i class="fas fa-search"></i>
+    <div class="search_wrap search_wrap_3">
+        <div class="search_box">
+            <input type="text" class="input" placeholder="search...">
+            <div class="btn btn_common">
+                <i class="fas fa-search"></i>
+            </div>
         </div>
     </div>
-</div>
+    <h2>Company List</h2>
+    
+    <button class = "myButton">Register New Company</button>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Address</th>
+                <th>Terms & Conditions</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Jamil</td>
+                <td>No 46, Jalan Hutan Melintang</td>
+                <td>Term 1</td>
+                <td>
+                    <button class = "bview">View</button>
+                    <button class = "bupdate">Kemaskini</button>
+                    <button class = "bdelete">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Nami</td>
+                <td>No 47, Jalan Hutan Melintang</td>
+                <td>Term 2</td>
+                <td>
+                    <button class = "bview">View</button>
+                    <button class = "bupdate">Kemaskini</button>
+                    <button class = "bdelete">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Iskandar</td>
+                <td>No 47, Jalan Hutan Melintang</td>
+                <td>Term 2</td>
+                <td>
+                    <button class = "bview">View</button>
+                    <button class = "bupdate">Kemaskini</button>
+                    <button class = "bdelete">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Malik</td>
+                <td>No 47, Jalan Hutan Melintang</td>
+                <td>Term 2</td>
+                <td>
+                    <button class = "bview">View</button>
+                    <button class = "bupdate">Kemaskini</button>
+                    <button class = "bdelete">Delete</button>
+                </td>
+            </tr>
+            <!-- and so on... -->
+        </tbody>
+    </table>
 
 </div>
-</body>
