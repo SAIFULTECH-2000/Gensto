@@ -5,11 +5,19 @@ class User extends Controller{
         $this->view('User/index');
         $this->view('Components/footer');
     }
-    public function profile(){
-
+    public function register(){
+        $this->view('Components/header');
+        $this->view('User/Register');
+        $this->view('Components/footer');
     }
+    public function profile(){
+        $this->view('Components/header');
+        $this->view('User/Profile');
+        $this->view('Components/footer');
+    }
+
     public function kemaskini(){
-        
+
     }
 }
         
