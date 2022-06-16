@@ -107,12 +107,18 @@ input[type=submit]:hover {
 
 /* Company */
 
-.container .input{
+.con{
+  margin-left: 301px;}
+
+.con .input{
 	border: 0;
 	outline: none;
 	color: #8b7d77;
 }
 
+.ico{
+  padding: 23px;
+}
 .search_wrap{
 	width: 500px;
 	margin: 38px auto;
@@ -162,13 +168,120 @@ input[type=submit]:hover {
 	padding-right: 80px;
 }
 
-.search_wrap.search_wrap_3 .search_box .input,
-.search_wrap.search_wrap_4 .search_box .input,
-.search_wrap.search_wrap_6 .search_box .input{
-	border-radius: 50px;
+.search_wrap.search_wrap_3 .search_box .input{
+  border-radius: 50px;
+	border-style: solid;
+	border-width: 5px;
+	border-color: cadetblue;
 }
 
 .search_wrap.search_wrap_3 .search_box .btn{
 	right: 0px;
+  top: 10px;
 	border-radius: 50%;
 }
+
+  /* Table-con */
+  .styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+/* .styled-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+} */
+.styled-table tbody tr:hover {
+  font-weight: bold;
+  color: #009879;
+}
+.bview{
+  background-color: #e6ff27;
+  border: none;
+  border-radius:8px;
+  color: rgb(0, 0, 0);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  
+}
+.bupdate{
+  background-color: #3fded1;
+  border: none;
+  border-radius:8px;
+  color: rgb(0, 0, 0);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.bdelete{
+  background-color: #f02020;
+  border: none;
+  border-radius:8px;
+  color: rgb(0, 0, 0);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.myButton {
+	box-shadow: 0px 10px 14px -7px #9fb4f2;
+	background-color:#7892c2;
+  border-style: none;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+	padding:13px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #283966;
+}
+.myButton:hover {
+	background-color:#476e9e;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+/* END Company STYLE */
