@@ -13,6 +13,7 @@
     
     
     <a href="<?=baseurl?>Company/register"> <button class="myButton">Register New Company</button></a>
+    
     <table class="styled-table">
         <thead>
             <tr>
@@ -24,51 +25,20 @@
             </tr>
         </thead>
         <tbody>
+        <?php foreach ($data as $datas): ?>
             <tr>
-                <td>1</td>
-                <td>Jamil</td>
-                <td>No 46, Jalan Hutan Melintang</td>
-                <td>Term 1</td>
+                <td><?= $datas['id']; ?></td>
+                <td><?= $datas['nama']; ?></td>
+                <td><?= $datas['address']; ?></td>
+                <td><?= $datas['termsandconditions']; ?></td>
                 <td>
                     <button class = "bview">View</button>
                     <button class = "bupdate">Kemaskini</button>
                     <button class = "bdelete">Delete</button>
                 </td>
             </tr>
-            <tr>
-                <td>2</td>
-                <td>Nami</td>
-                <td>No 47, Jalan Hutan Melintang</td>
-                <td>Term 2</td>
-                <td>
-                    <button class = "bview">View</button>
-                    <button class = "bupdate">Kemaskini</button>
-                    <button class = "bdelete">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Iskandar</td>
-                <td>No 47, Jalan Hutan Melintang</td>
-                <td>Term 2</td>
-                <td>
-                    <button class = "bview">View</button>
-                    <button class = "bupdate">Kemaskini</button>
-                    <button class = "bdelete">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Malik</td>
-                <td>No 47, Jalan Hutan Melintang</td>
-                <td>Term 2</td>
-                <td>
-                    <button class = "bview">View</button>
-                    <button class = "bupdate">Kemaskini</button>
-                    <button class = "bdelete">Delete</button>
-                </td>
-            </tr>
-            <!-- and so on... -->
+                <?php endforeach; ?>
+           
         </tbody>
     </table>
 
