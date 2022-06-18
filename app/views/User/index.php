@@ -114,7 +114,7 @@ div {
 </style>
 <div class="content">
    <div style="padding:50px">
-   <form action="/action_page.php">
+   <form action="<?=baseurl?>user" method="post">
     <table>
         <tr>
             <td><input type="text" id="search" name="search" placeholder="Your Searching.."></td>
@@ -122,12 +122,17 @@ div {
         </tr>
     </table>
    </form>
+   <?php
+   
+   if(isset($data["search"])){
+    echo "<h1>Your searching is :".$data['search']."</h1>";
+   }
+   ?>
    <br>
    <h1>Users Account</h1>
-   <button class="new">Register new Account Here</button>
+   <a class="new" href="<?=baseurl?>user/register">Register new Account Here</a>
    <br> 
    <hr>
-    
 <table id="users">
   <tr>
     <th>No</th>
@@ -138,45 +143,28 @@ div {
     <th>Status</th>
     <th>Action</th>
   </tr>
+  <?php
+  $i=1;
+ 
+  foreach($data as $key):
+  ?>
   <tr>
     <td>1</td>
-    <td>Maria Anders</td>
-    <td>Maria2022</td>
-    <td>LHI SDN BHD</td>
-    <td>CLIENT</td>
-    <td>Active</td>
+    <td><?=$key['name']?></td>
+    <td><?=$key['username']?></td>
+    <td><?=$key['nama']?></td>
+    <td><?=$key['role']?></td>
+    <td><?=$key['isdelete']?></td>
     <td>
-        <button class="profile">Profile</button>
-        <button class="kemaskini">Kemaskini</button>
-        <button class="delete">Delete</button>
+        <a class="profile" href="<?=baseurl?>user/profile/<?=$key['userid']?>">Profile</a>
+        <a class="kemaskini"  href="<?=baseurl?>user/kemaskini/<?=$key['userid']?>">Kemaskini</a>
+        <form action="<?=baseurl?>user/delete" method="POST" onsubmit="return confirm('Are you sure you want to submit this form?');">
+        <input type="hidden" name="id" value="<?=$key['userid']?>" />
+        <input type="submit" class="delete" value="Delete" />
+        </form>
     </td>
   </tr>
-  <tr>
-    <td>2</td>
-    <td>Christina Berglund</td>
-    <td>Chris2022</td>
-    <td>PLUGIN AND CO SDN BHD</td>
-    <td>CLIENT</td>
-    <td>Active</td>
-    <td>
-        <button class="profile">Profile</button>
-        <button class="kemaskini">Kemaskini</button>
-        <button class="delete">Delete</button>
-    </td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>Francisco Chang</td>
-    <td>Chang2022</td>
-    <td>KINGCRAB SDN BHD</td>
-    <td>CLIENT</td>
-    <td>Active</td>
-    <td>
-        <button class="profile">Profile</button>
-        <button class="kemaskini">Kemaskini</button>
-        <button class="delete">Delete</button>
-    </td>
-  </tr>
+  <?php endforeach; ?>
 </table>
 
    </div>
