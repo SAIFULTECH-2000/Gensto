@@ -43,5 +43,19 @@ class Company extends Controller
         $results = $this->conn->query($sql);
         return $results;
     }
- 
+    public function deres(){
+
+        $results = $this->delete("company");
+    }
+    public function delete($tbname){
+        echo "hi";
+        $id = $_POST['id'];
+        $sql = "DELETE FROM $tbname where id=$id;";
+        $results = $this->conn->query($sql);
+        $furl=baseurl.$tbname;
+        header("Location:$furl");
+        
+
+
+    }
 }

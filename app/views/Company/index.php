@@ -10,6 +10,14 @@ $(document).ready(function(){
   });
 });
 </script>
+<script>
+    function checker(){
+        var result = confirm('Are you sure to delete?');
+        if (result == false){
+            event.preventDefault();
+        }
+    }
+</script>
 <div class="con">
 
     <div class="search_wrap search_wrap_3">
@@ -45,7 +53,13 @@ $(document).ready(function(){
                 <td>
                     <button class = "bview">View</button>
                     <button class = "bupdate">Kemaskini</button>
-                    <button class = "bdelete">Delete</button>
+                    <form action="<?=baseurl?>company/deres" method="POST" >
+                    <input type="hidden" name="id" value="<?=$datas['id']; ?>">
+                    <input onclick="checker()" class ="bdelete" type="submit" value="Delete">
+
+                    </form>
+                    <!-- <a onclick="checker()" href="<?=baseurl?>Company/delete?fn=$datas[id]"><button class = "bdelete">Delete</button></a> -->
+                    
                 </td>
             </tr>
                 <?php endforeach; ?>
