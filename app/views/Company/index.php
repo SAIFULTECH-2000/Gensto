@@ -1,9 +1,20 @@
 <script src="https://kit.fontawesome.com/75759bf957.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
 <div class="con">
 
     <div class="search_wrap search_wrap_3">
         <div class="search_box">
-            <input type="text" class="input" placeholder="search...">
+            <input id="myInput" type="text" class="input" placeholder="search...">
             <div class="btn btn_common">
             <i class="fa-solid fa-magnifying-glass ico"></i>
             </div>
@@ -24,7 +35,7 @@
                 <th>Action</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="myTable">
         <?php foreach ($data as $datas): ?>
             <tr>
                 <td><?= $datas['id']; ?></td>
