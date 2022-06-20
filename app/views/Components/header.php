@@ -13,8 +13,12 @@
             <img src="<?=baseurl?>img/logo.png" style=" border-radius: 50%;" width="100px" >
             <h4>ADMIN</h4>
         </div>
-        <a href="index.html">Home</a>
-        <a class="active" href="<?=baseurl?>User">Users</a>
-        <a href="hobby.html">Companys</a>
+       
+        <a  href="<?=baseurl?>Dashboard/"  <?php if( ucfirst($_GET['url'])=='Dashboard')echo "class='active'"?>>Home</a>
+        <a  href="<?=baseurl?>User" <?php if( ucfirst($_GET['url'])=='User')echo "class='active'"?>>Users</a>
+        <a href="<?=baseurl?>Customer"  <?php if( ucfirst($_GET['url']=='Customer'))echo "class='active'"?>>Customer</a>
+        <a href="<?=baseurl?>Quotation"  <?php if( ucfirst($_GET['url']=='Quotation'))echo "class='active'"?>>Quotation</a>
+        <a href="<?=baseurl?>Invoice"  <?php if( ucfirst($_GET['url']=='Invoice'))echo "class='active'"?>>Invoice</a>
+        <a href="<?=baseurl?>Company"  <?php if( ucfirst($_GET['url']=='Company'))echo "class='active'"?>>Companys</a>
        <a href="aboutus.html">Logout</a>
     </div>

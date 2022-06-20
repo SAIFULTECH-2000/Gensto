@@ -145,8 +145,10 @@ div {
   </tr>
   <?php
   $i=1;
- 
-  foreach($data as $key):
+  if($data['result']!=null){
+   
+    while($key=$data['result']->fetch_assoc())
+    {
   ?>
   <tr>
     <td>1</td>
@@ -164,7 +166,12 @@ div {
         </form>
     </td>
   </tr>
-  <?php endforeach; ?>
+  <?php } }else{
+
+    echo "<tr>
+    <td colspan='7'>No data is found</td>
+    </tr>";
+  }?>
 </table>
 
    </div>

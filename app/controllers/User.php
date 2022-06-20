@@ -23,15 +23,25 @@ class User extends Controller{
             $name=$_POST['search']; 
             $data['search']=$_POST['search']; 
             $sql = "SELECT * from user  inner join company on company.userid = user.id where name like '$name' ";
-        
+            $data['result'] = $this->conn->query($sql);
         }else{
             $sql = "SELECT * from user  inner join company on company.userid = user.id ";
+            $data['result'] = $this->conn->query($sql);
         }
-        $data['result'] = $this->conn->query($sql)->fetch_assoc();
-        //var_dump($result);
+
+      
+        
         $this->view('Components/header');
         $this->view('User/index',$data);
         $this->view('Components/footer');
+    }
+    public function parseURL(){
+        if(isset($_GET['url'])){
+            $url = rtrim($_GET['url'],'/');
+            $url = filter_var($url, FILTER_SANITIZE_URL);
+            $url = explode("/",$url);
+            return $url;
+        }
     }
     public function register(){
         //Kena buat validation untuk check username or email is take or not 
