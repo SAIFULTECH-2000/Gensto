@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 12, 2022 at 06:26 PM
+-- Generation Time: Jun 23, 2022 at 07:50 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -34,6 +34,14 @@ CREATE TABLE `company` (
   `termsandconditions` varchar(500) NOT NULL,
   `userid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `company`
+--
+
+INSERT INTO `company` (`id`, `nama`, `address`, `termsandconditions`, `userid`) VALUES
+(1, 'KAMI SDN BHD', 'TEST ALAMT', 'Diskaun', 2),
+(2, 'Syakir SDN', 'test', 'test', 3);
 
 -- --------------------------------------------------------
 
@@ -114,19 +122,29 @@ CREATE TABLE `user` (
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `role` varchar(255) NOT NULL
+  `role` varchar(255) NOT NULL,
+  `isdelete` varchar(255) DEFAULT 'SHOW',
+  `name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `email`, `password`, `role`) VALUES
-(1, 'Admin', 'admin@gensto.com', '$2y$10$w4V7t9xM9J.ldKW3xuYMNOUpf4.o5VK.NQqg02yBkj5TFn4dQtkY.', 'Admin');
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `role`, `isdelete`, `name`) VALUES
+(1, 'Admin', 'admin@gensto.com', '$2y$10$w4V7t9xM9J.ldKW3xuYMNOUpf4.o5VK.NQqg02yBkj5TFn4dQtkY.', 'Admin', 'SHOW', 'SAIFUL NIZAM BIN ROKEDIN'),
+(2, 'SAIFULNIZAM', 'saifultech.official@gmail.com', '$2y$10$/opkJ9JsyjLfWKDWJFinQeSlpJFUl0cv6/jQVMb3jCNC7S0i..zC2', 'Client', 'inactive', 'SAIFUL NIZAM BIN ROKEDIN'),
+(3, 'Syakir', 'syakirshakri0125@gmail.com', '$2y$10$gYGRUghl3X0H2gDuidFyXeZb/KKI.YxtI3ICCkMgIcAWzZ4z03pBq', 'Client', 'SHOW', 'Syakir Bin syakir');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `company`
+--
+ALTER TABLE `company`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `customer`
@@ -169,6 +187,12 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `company`
+--
+ALTER TABLE `company`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
@@ -202,7 +226,7 @@ ALTER TABLE `quo_details`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
