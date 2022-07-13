@@ -65,7 +65,8 @@ class User extends Controller{
                 //kau save userid and insert dekat company nanti.
                 $companyname = $_POST['company'];
                 $address = $_POST['address'];
-                $query= "SELECT id FROM user where username like '$name' limit 1";
+                //edit name to username variable 
+                $query= "SELECT id FROM user where username like '$username' limit 1";
                 $result = $this->conn->query($query); 
                 $id = 0;
                 while($row = $result->fetch_assoc()) {
