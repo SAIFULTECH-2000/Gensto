@@ -26,8 +26,9 @@ class Quotation extends Controller{
              while($row = $result->fetch_assoc()) {
                  $id = $row['id'];
              }
-             $sql = "SELECT * from quotation inner join customer on customer.id = quotation.customerid where quotation.companyid like '$id' ";
+             $sql = "SELECT quotation.id,customer.nama,quotation.date,quotation.duedate from quotation inner join customer on customer.id = quotation.customerid where quotation.companyid like '$id' ";
              $data['result'] = $this->conn->query($sql);
+             
         $this->view('Components/header');
         $this->view('Quotation/index',$data);
         $this->view('Components/footer');
@@ -66,10 +67,18 @@ class Quotation extends Controller{
         $this->view('Components/footer');
        
     }
-    public function generate(){
-
+    public function generate($id){
+        $data['id']= $id;
+        $sql = "SELECT * from quotation inner join customer on customer.id = quotation.customerid where quotation.id like '$id' limit 1 ";
+        $data['result'] = $this->conn->query($sql)->fetch_assoc();
+        $username=  $_SESSION['username'];
+        $sql = "SELECT * from user inner join company  on company.userid = user.id WHERE username like '$username' limit 1";
+        $data['user']= $this->conn->query($sql)->fetch_assoc();
+        $sql = "SELECT * from quo_details where quoid = $id ";
+        $data['result2'] = $this->conn->query($sql);
+        
         $this->view('Components/header');
-        $this->view('Quotation/generate');
+        $this->view('Quotation/generate',$data);
         $this->view('Components/footer');
     }
 

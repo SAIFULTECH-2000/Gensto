@@ -124,7 +124,7 @@ div {
    </form>
    <br>
    <h1>Quotation Section</h1>
-   <a href="<?=baseurl?>Quotation\Create">Create</a>
+   <a class="download" href="<?=baseurl?>Quotation\Create">Create</a>
    <br> 
    <hr>
     
@@ -139,8 +139,10 @@ div {
   </tr>
   <?php 
 $i=1;
+
     while($key=$data['result']->fetch_assoc())
     {
+  
   ?>
   <tr>
     <td><?=$i++?></td>
@@ -148,9 +150,8 @@ $i=1;
     <td><?=$key['date']?></td>
     <td><?=$key['duedate']?></td>
     <td>
-        <button class="generate">Generate</button>
-        <button class="download">Download</button>
-        <button class="delete">Delete</button>
+        <a class="generate" href="<?=baseurl?>Quotation/generate/<?=$key['id']?>">Generate</a>
+     
     </td>
   </tr>
   <?php }
