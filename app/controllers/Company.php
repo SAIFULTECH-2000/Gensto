@@ -65,19 +65,21 @@ class Company extends Controller
 
     public function select($tbname)
     {
-        $username=  $_SESSION['username'];
         
-        //$sql = "SELECT * FROM $tbname where ;";
+        $username= $_SESSION['username'];
+        
+        //$query = "SELECT * FROM $tbname ;";
         $query = "SELECT id FROM user where username like '$username' limit 1";
 
         $result = $this->conn->query($query); 
+
         $id=0;
         while($row = $result->fetch_assoc()) {
             $id = $row['id'];
             $_SESSION['id']=$id;
             
         }
-        $sql = "SELECT * FROM $tbname where id = '$id'";
+        $sql = "SELECT * FROM $tbname where userid = '$id'";
         $results = $this->conn->query($sql); 
         return $results;
     }

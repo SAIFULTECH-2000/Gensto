@@ -34,19 +34,8 @@
         </div>
     </div>
     <h2 class="center">Company Details</h2>
+    
 
-    <tbody id="myTable">
-        <?php foreach ($data as $datas) : ?>
-            <tr>
-                <td><?= $datas['id']; ?></td>
-                <td><?= $datas['nama']; ?></td>
-                <td><?= $datas['address']; ?></td>
-                <td><?= $datas['termsandconditions']; ?></td>
-            </tr>
-        <?php endforeach; ?>
-
-    </tbody>
-    </table>
     <?php foreach ($data as $datas) : ?>
         <h3>Name: <?= $datas['nama']; ?></h3>
         <h3>Address: <?= $datas['address']; ?></h3>
