@@ -137,7 +137,7 @@ $i=1;
   <tr>
     <td><?=$i++?></td>
     <td><?=$key['nama']?></td>
-    <td><?=$key['date']?></td>
+    <td><?=$key['address']?></td>
     <td><?=$key['shipaddress']?></td>
     <td>
         <a href="<?=baseurl?>Customer/profile/<?=$key['id']?>" class="profile">Profile</a>
