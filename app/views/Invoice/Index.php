@@ -111,22 +111,7 @@ div {
   cursor: pointer;
   border-radius: 10px;
 }
-.addmore {
-  background-color: green;
-  border: none;
-
-  padding: 10px 27px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 12px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 10px;
-}
 </style>
-
-
 <div class="content">
    <div style="padding:50px">
    <form action="/action_page.php">
@@ -139,56 +124,42 @@ div {
    </form>
    <br>
    <h1>Invoice Section</h1>
+   <a class="download" href="<?=baseurl?>Invoice\Create">Create</a>
    <br> 
    <hr>
     
 <table id="quotes">
-  <tr>
-    <th>Item No</th>
-    <th>Item Name</th>
-    <th>Quantiy</th>
-    <th>Price</th>
-    <th>Total</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Kerusi</td>
-    <td>100</td>
-    <td>RM 20.00</td>
-    <td>RM 2000</td>
-    <td>
-        <button class="generate">Generate</button>
-        <button class="download">Download</button>
-        <button class="delete">Delete</button>
-    </td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>Meja</td>
-    <td>100</td>
-    <td>RM 15.00</td>
-    <td>RM 1500</td>
-    <td>
-        <button class="generate">Generate</button>
-        <button class="download">Download</button>
-        <button class="delete">Delete</button>
-    </td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>Langsir</td>
-    <td>100</td>
-    <td>RM 10.00</td>
-    <td>RM 1000</td>
-    <td>
-        <button class="generate">Generate</button>
-        <button class="download">Download</button>
-        <button class="delete">Delete</button>
-    </td>
-  </tr>
-</table><br><br>
 
-<button class="addmore">Add More</button>
+  <tr>
+    <th>No</th>
+    <th>nama</th>
+    <th>date</th>
+    <th>duedate</th>
+    <th>Action</th>
+  </tr>
+  <?php 
+$i=1;
+
+    while($key=$data['result']->fetch_assoc())
+    {
+  
+  ?>
+  <tr>
+    <td><?=$i++?></td>
+    <td><?=$key['nama']?></td>
+    <td><?=$key['date']?></td>
+    <td><?=$key['duedate']?></td>
+    <td>
+        <a class="generate" href="<?=baseurl?>Invoice/generate/<?=$key['id']?>">Generate</a>
+     
+    </td>
+  </tr>
+  <?php }
+  ?>
+  
+ 
+</table>
 
    </div>
+   <br><br>
+</div>

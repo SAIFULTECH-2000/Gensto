@@ -234,6 +234,8 @@ ALTER TABLE `customer`
 --
 ALTER TABLE `invoice`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE inv_details
+RENAME COLUMN `unit/price` TO `unit`;
 
 --
 -- AUTO_INCREMENT for table `inv_details`
