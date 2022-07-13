@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?=baseurl?>css/style.css">
-    <title>Customer | GenSto</title>
-</head>
 <style>	
 
 #users {
@@ -121,87 +112,42 @@ div {
   border-radius: 10px;
 }
 </style>
-<body>
-    <div class="sidebar">
-        <div class="mypic">
-            <img src="<?=baseurl?>img/logo.png" style=" border-radius: 50%;" width="100px" >
-            <h4>ADMIN</h4>
-        </div>
-        <a href="index.html">Home</a>
-        <a href="<?=baseurl?>User">Users</a>
-        <a class="active" href="<?=baseurl?>Customer">Customer</a>
-        <a href="<?=baseurl?>company">Companys</a>
-       <a href="aboutus.html">Logout</a>
-    </div>
+
 <div class="content">
    <div style="padding:50px">
-   <form action="/action_page.php">
-    <table>
-        <tr>
-            <td><input type="text" id="search" name="search" placeholder="Your Searching.."></td>
-            <td><input type="submit" value="Search"></td>
-        </tr>
-    </table>
-   </form>
    <br>
    <h1>Customer Details</h1>
-   <button class="new">Register New Customer Here</button>
+   <a class="new" href="<?=baseurl?>Customer/register">Register New Customer Here</a>
    <br> 
    <hr>
     
-<table id="customers">
+<table id="users">
   <tr>
     <th>No</th>
     <th>Name</th>
     <th>Address</th>
     <th>Ship Address</th>
-    <th>Email</th>
-    <th>Phone Number</th>
     <th>Action</th>
   </tr>
+  <?php 
+$i=1;
+    while($key=$data['result']->fetch_assoc())
+    {
+  ?>
   <tr>
-    <td>1</td>
-    <td>Abu Terbakar</td>
-    <td>9, Tepi Jalan, Belakang Rumah, 43210 UK, Selangor</td>
-    <td>9, Tepi Jalan, Depan Rumah, 43210 UK, Selangor</td>
-    <td>fieryAsh9@hotmail.com</td>
-    <td>+6011-11011011</td>
+    <td><?=$i++?></td>
+    <td><?=$key['nama']?></td>
+    <td><?=$key['date']?></td>
+    <td><?=$key['shipaddress']?></td>
     <td>
-        <button class="profile">Profile</button>
-        <button class="kemaskini">Kemaskini</button>
-        <button class="delete">Delete</button>
+        <a href="<?=baseurl?>Customer/profile/<?=$key['id']?>" class="profile">Profile</a>
+        <a href="<?=baseurl?>Customer/Kemaskini/<?=$key['id']?>" class="kemaskini">Kemaskini</a>
+        <a href="<?=baseurl?>Customer/Delete/<?=$key['id']?>" class="delete">Delete</a>
     </td>
   </tr>
-  <tr>
-    <td>2</td>
-    <td>Abu Terlaris</td>
-    <td>19, Atas Jalan, Tiada Rumah, 43210 UK, Selangor</td>
-    <td>19, Atas Jalan, Ada Rumah, 43210 UK, Selangor</td>
-    <td>bob@bob.com</td>
-    <td>+6016-60660606</td>
-    <td>
-        <button class="profile">Profile</button>
-        <button class="kemaskini">Kemaskini</button>
-        <button class="delete">Delete</button>
-    </td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>Pak Pandir</td>
-    <td>4, Jalan Komedi, Taman Lawak, 43434 KL, Kuala Lumpur</td>
-    <td>5, Jalan Komedi, Taman Lawak, 43434 KL, Kuala Lumpur</td>
-    <td>example@email.com</td>
-    <td>+6012-34567890</td>
-    <td>
-        <button class="profile">Profile</button>
-        <button class="kemaskini">Kemaskini</button>
-        <button class="delete">Delete</button>
-    </td>
-  </tr>
+<?php } ?>
 </table>
 
    </div>
-   <br><br>
+  
 </div>
-</body>
-</html>

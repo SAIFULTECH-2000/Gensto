@@ -1,6 +1,6 @@
 <?php
 class User extends Controller{
-    private $host = DB_HOST;
+      private $host = DB_HOST;
     private $user = DB_USER;
     private $password = DB_PASSWORD;
     private $database = DB_NAME;
@@ -60,17 +60,28 @@ class User extends Controller{
 
             if($this->conn->query($sql)==TRUE){
                  //jika berjaya
-            $baseUrl = baseurl;
-            $url = $baseUrl."user";
-            header("Location:$url");
+                 //Irsyad nanti tambah sini
+                //mula2 kau buat get userid where from user table
+                //kau save userid and insert dekat company nanti.
+                $companyname = $_POST['company'];
+                $address = $_POST['address'];
+                $query= "SELECT id FROM user where username like '$name' limit 1";
+                $result = $this->conn->query($query); 
+                $id = 0;
+                while($row = $result->fetch_assoc()) {
+                    $id = $row['id'];
+                }
+                $sql = "INSERT INTO company(nama,address,termsandconditions,userid) values ('$companyname','$address','',$id)";
+                   if($this->conn->query($sql)==TRUE){
+                    $baseUrl = baseurl;
+                    $url = $baseUrl."user";
+                    header("Location:$url");
+                   }
             }else{
                 echo "error";
             }
 
-            //Irsyad nanti tambah sini
-            //mula2 kau buat get userid where from user table
-            //kau save userid and insert dekat company nanti.
-
+           
            
         }
     }

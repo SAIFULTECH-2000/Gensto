@@ -58,4 +58,7 @@ class Company extends Controller
 
 
     }
+    public function profie(){
+        
+    }
 }

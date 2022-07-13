@@ -124,50 +124,39 @@ div {
    </form>
    <br>
    <h1>Quotation Section</h1>
+   <a href="<?=baseurl?>Quotation\Create">Create</a>
    <br> 
    <hr>
     
 <table id="quotes">
+
   <tr>
     <th>No</th>
-    <th>Company</th>
-    <th>Name</th>
-    <th>Status</th>
+    <th>nama</th>
+    <th>date</th>
+    <th>duedate</th>
     <th>Action</th>
   </tr>
+  <?php 
+$i=1;
+    while($key=$data['result']->fetch_assoc())
+    {
+  ?>
   <tr>
-    <td>1</td>
-    <td>LHI SDN BHD</td>
-    <td>Maria Anders</td>
-    <td>Complete</td>
+    <td><?=$i++?></td>
+    <td><?=$key['nama']?></td>
+    <td><?=$key['date']?></td>
+    <td><?=$key['duedate']?></td>
     <td>
         <button class="generate">Generate</button>
         <button class="download">Download</button>
         <button class="delete">Delete</button>
     </td>
   </tr>
-  <tr>
-  <td>2</td>
-    <td>PLUGIN AND CO SDN BHD</td>
-    <td>Christina Berglund</td>
-    <td>Complete</td>
-    <td>
-        <button class="generate">Generate</button>
-        <button class="download">Download</button>
-        <button class="delete">Delete</button>
-    </td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>KINGCRAB SDN BHD</td>
-    <td>Francisco Change</td>
-    <td>Complete</td>
-    <td>
-        <button class="generate">Generate</button>
-        <button class="download">Download</button>
-        <button class="delete">Delete</button>
-    </td>
-  </tr>
+  <?php }
+  ?>
+  
+ 
 </table>
 
    </div>

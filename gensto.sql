@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2022 at 07:50 AM
+-- Generation Time: Jul 13, 2022 at 02:42 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -57,6 +57,13 @@ CREATE TABLE `customer` (
   `companyid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`id`, `nama`, `address`, `shipaddress`, `companyid`) VALUES
+(1, 'Saiful nizam', 'puncak alam', '', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -81,7 +88,8 @@ CREATE TABLE `inv_details` (
   `id` int(11) NOT NULL,
   `description` varchar(2000) NOT NULL,
   `unit/price` varchar(255) NOT NULL,
-  `qty` varchar(255) NOT NULL
+  `qty` varchar(255) NOT NULL,
+  `invid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -98,6 +106,13 @@ CREATE TABLE `quotation` (
   `duedate` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `quotation`
+--
+
+INSERT INTO `quotation` (`id`, `date`, `customerid`, `companyid`, `duedate`) VALUES
+(10, '2022-07-13', 1, 2, '2022-07-13');
+
 -- --------------------------------------------------------
 
 --
@@ -106,10 +121,18 @@ CREATE TABLE `quotation` (
 
 CREATE TABLE `quo_details` (
   `id` int(11) NOT NULL,
-  `description` varchar(2000) NOT NULL,
-  `unit/price` varchar(255) NOT NULL,
-  `qty` varchar(255) NOT NULL
+  `description` varchar(2000) DEFAULT NULL,
+  `unit` varchar(255) DEFAULT NULL,
+  `qty` varchar(255) DEFAULT NULL,
+  `quoid` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `quo_details`
+--
+
+INSERT INTO `quo_details` (`id`, `description`, `unit`, `qty`, `quoid`) VALUES
+(10, '(RM17/hr 4th month and above)', '300', '1', 10);
 
 -- --------------------------------------------------------
 
@@ -144,37 +167,45 @@ INSERT INTO `user` (`id`, `username`, `email`, `password`, `role`, `isdelete`, `
 -- Indexes for table `company`
 --
 ALTER TABLE `company`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `userid` (`userid`);
 
 --
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `companyid` (`companyid`);
 
 --
 -- Indexes for table `invoice`
 --
 ALTER TABLE `invoice`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `companyid` (`companyid`),
+  ADD KEY `customerid` (`customerid`);
 
 --
 -- Indexes for table `inv_details`
 --
 ALTER TABLE `inv_details`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `invid` (`invid`);
 
 --
 -- Indexes for table `quotation`
 --
 ALTER TABLE `quotation`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `companyid` (`companyid`),
+  ADD KEY `customerid` (`customerid`);
 
 --
 -- Indexes for table `quo_details`
 --
 ALTER TABLE `quo_details`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `quoid` (`quoid`);
 
 --
 -- Indexes for table `user`
@@ -196,7 +227,7 @@ ALTER TABLE `company`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `invoice`
@@ -214,19 +245,61 @@ ALTER TABLE `inv_details`
 -- AUTO_INCREMENT for table `quotation`
 --
 ALTER TABLE `quotation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `quo_details`
 --
 ALTER TABLE `quo_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `company`
+--
+ALTER TABLE `company`
+  ADD CONSTRAINT `company_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `user` (`id`);
+
+--
+-- Constraints for table `customer`
+--
+ALTER TABLE `customer`
+  ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`companyid`) REFERENCES `company` (`id`);
+
+--
+-- Constraints for table `invoice`
+--
+ALTER TABLE `invoice`
+  ADD CONSTRAINT `invoice_ibfk_1` FOREIGN KEY (`companyid`) REFERENCES `company` (`id`),
+  ADD CONSTRAINT `invoice_ibfk_2` FOREIGN KEY (`customerid`) REFERENCES `customer` (`id`);
+
+--
+-- Constraints for table `inv_details`
+--
+ALTER TABLE `inv_details`
+  ADD CONSTRAINT `inv_details_ibfk_1` FOREIGN KEY (`invid`) REFERENCES `invoice` (`id`);
+
+--
+-- Constraints for table `quotation`
+--
+ALTER TABLE `quotation`
+  ADD CONSTRAINT `quotation_ibfk_1` FOREIGN KEY (`companyid`) REFERENCES `company` (`id`),
+  ADD CONSTRAINT `quotation_ibfk_2` FOREIGN KEY (`customerid`) REFERENCES `customer` (`id`);
+
+--
+-- Constraints for table `quo_details`
+--
+ALTER TABLE `quo_details`
+  ADD CONSTRAINT `quo_details_ibfk_1` FOREIGN KEY (`quoid`) REFERENCES `quotation` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
