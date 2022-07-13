@@ -11,14 +11,24 @@
     <div class="sidebar">
         <div class="mypic">
             <img src="<?=baseurl?>img/logo.png" style=" border-radius: 50%;" width="100px" >
-            <h4>ADMIN</h4>
+            <h4><?= $_SESSION['username']?></h4>
         </div>
+       <?php 
+       $url =$_GET['url'];
+       $url=explode("/",$url);
+       $role = $_SESSION['role'];
+       ?>
+       <?php if($role=='Admin'){?>
+        <a  href="<?=baseurl?>Dashboard"  <?php if( ucfirst($url[0])=='Dashboard')echo "class='active'"?>>Home</a>
+        <a  href="<?=baseurl?>User" <?php if( ucfirst($url[0])=='User')echo "class='active'"?>>Users</a>
+        <?php } ?>
+          <a href="<?=baseurl?>Users" <?php if( ucfirst($url[0])=='Users')echo "class='active'"?>>Profile</a>
+          <?php if($role=='Client'){?>
+        <a href="<?=baseurl?>Customer"  <?php if( ucfirst($url[0]=='Customer'))echo "class='active'"?>>Customer</a>
+        <a href="<?=baseurl?>Quotation"  <?php if( ucfirst($url[0]=='Quotation'))echo "class='active'"?>>Quotation</a>
+        <a href="<?=baseurl?>Invoice"  <?php if( ucfirst($url[0]=='Invoice'))echo "class='active'"?>>Invoice</a>
+        <a href="<?=baseurl?>Company"  <?php if( ucfirst($url[0]=='Company'))echo "class='active'"?>>Companys</a>
+           <?php } ?>
        
-        <a  href="<?=baseurl?>Dashboard/"  <?php if( ucfirst($_GET['url'])=='Dashboard')echo "class='active'"?>>Home</a>
-        <a  href="<?=baseurl?>User" <?php if( ucfirst($_GET['url'])=='User')echo "class='active'"?>>Users</a>
-        <a href="<?=baseurl?>Customer"  <?php if( ucfirst($_GET['url']=='Customer'))echo "class='active'"?>>Customer</a>
-        <a href="<?=baseurl?>Quotation"  <?php if( ucfirst($_GET['url']=='Quotation'))echo "class='active'"?>>Quotation</a>
-        <a href="<?=baseurl?>Invoice"  <?php if( ucfirst($_GET['url']=='Invoice'))echo "class='active'"?>>Invoice</a>
-        <a href="<?=baseurl?>Company"  <?php if( ucfirst($_GET['url']=='Company'))echo "class='active'"?>>Companys</a>
-       <a href="aboutus.html">Logout</a>
+       <a href="<?=baseurl?>Auth/logout">Logout</a>
     </div>

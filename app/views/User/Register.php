@@ -16,11 +16,11 @@
       <option value="Admin">Admin</option>
       <option value="Client">Client</option>
     </select>
-    <h1>
-
-    ADD company irsyad 
-    </h1>
-  
+<!-- IRSYAD -->
+  <label for="Company">Company Name</label>
+    <input type="text" id="company" name="company" placeholder="Your Company..">
+    <label for="Address">Address</label>
+    <input type="text" id="address" name="address" placeholder="Your Address..">
     <input type="submit" value="Submit">
   </form>
 </div>

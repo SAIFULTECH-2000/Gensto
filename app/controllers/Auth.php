@@ -31,8 +31,14 @@ class Auth extends Controller{
             $result = $this->conn->query($sql)->fetch_assoc();
             if($result){
                 if(password_verify($password,$result['password'])){
+                    $_SESSION['username'] = $username;
+                    $_SESSION['role'] = $result['role'];
                     $dashboard = $baseUrl."Dashboard";
+                    $user=$baseUrl."Users/Profile";
+                    if($result['role']=="Admin")
                     header("Location:$dashboard");
+                    else
+                    header("Location:$user");
                 }else{
                     header("Location:index.php");
                 }
@@ -40,6 +46,11 @@ class Auth extends Controller{
                 header("Location:index.php");
             }
         }
+    }
+    public function logout(){
+        session_destroy();
+         $baseUrl = baseurl;
+         header("Location:$baseUrl");
     }
 }
         
