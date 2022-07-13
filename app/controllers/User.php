@@ -48,14 +48,17 @@ class User extends Controller{
         $this->view('Components/header');
         $this->view('User/Register');
         $this->view('Components/footer');
+        
         if($_POST){
+            
             $username = $_POST['username'];
             $name=$_POST['name'];
             $role=$_POST['role'];
             $email=$_POST['email'];
             $isdelete="SHOW";
             $password = password_hash("abc123", PASSWORD_DEFAULT);
-            $sql = "INSERT INTO user (username, password, email,role,isdelete,name)
+            if($name != "" && $username !="" && $role !="" && $email !="" && $isdelete !=""){
+                $sql = "INSERT INTO user (username, password, email,role,isdelete,name)
             VALUES ('$username', '$password', '$email','$role','$isdelete','$name')";
 
             if($this->conn->query($sql)==TRUE){
@@ -79,12 +82,21 @@ class User extends Controller{
                     header("Location:$url");
                    }
             }else{
+                
                 echo "error";
             }
 
            
            
-        }
+        
+
+                }else{
+                    $baseUrl = baseurl;
+                    $url = $baseUrl."user";
+                    header("Location:$url");
+
+                }
+            }
     }
     
     public function profile($id){
