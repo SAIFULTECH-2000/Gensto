@@ -36,10 +36,37 @@ class Company extends Controller
         $this->view("Company/register_C");
         $this->view('Components/footer');
     }
+    public function edit()
+    {   $id = $_SESSION['id'];
+        
+        $sql = "SELECT * from company WHERE id = '$id' limit 1";
+        $result = $this->conn->query($sql)->fetch_assoc();
+        $this->view('Components/header');
+        $this->view("Company/edit",$result  );
+        $this->view('Components/footer');
+        if($_POST){
+            //$username = $_POST['username'];
+            $nama=$_POST['nama'];
+            $address=$_POST['address'];
+            //$email=$_POST['email'];
+            $sql = "UPDATE company SET nama='$nama',address='$address'WHERE id=$id";
+            
+            if($this->conn->query($sql)==TRUE){
+                //jika berjaya
+           $baseUrl = baseurl;
+           $url = $baseUrl."user";
+           header("Location:$url");
+           }else{
+               echo "error";
+           }
+
+        }
+    }
 
     public function select($tbname)
     {
         $username=  $_SESSION['username'];
+        
         //$sql = "SELECT * FROM $tbname where ;";
         $query = "SELECT id FROM user where username like '$username' limit 1";
 
@@ -47,6 +74,8 @@ class Company extends Controller
         $id=0;
         while($row = $result->fetch_assoc()) {
             $id = $row['id'];
+            $_SESSION['id']=$id;
+            
         }
         $sql = "SELECT * FROM $tbname where id = '$id'";
         $results = $this->conn->query($sql); 
